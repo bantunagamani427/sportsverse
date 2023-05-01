@@ -3,11 +3,11 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.SportsVerse.TCs.TC_008_CareerPageTest">
+      <class name="com.SportsVerse.TCs.TC_009_RoadMapPageTest">
         <methods>
-          <include name="careertest"/>
+          <include name="roadMapTest"/>
         </methods>
-      </class> <!-- com.SportsVerse.TCs.TC_008_CareerPageTest -->
+      </class> <!-- com.SportsVerse.TCs.TC_009_RoadMapPageTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

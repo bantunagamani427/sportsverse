@@ -146,13 +146,11 @@ public class TC_001_HomepageTest {
 			Thread.sleep(3000);
 			driver.switchTo().window(parent2);
 		}
+		
 		System.out.println("all icons are clicked one by one");
-
-
 		System.out.println("clicking on 1st FAQ");
-
-
 		JavascriptExecutor jse1 = (JavascriptExecutor) driver;
+		
 		jse1.executeScript("window.scrollBy(0,900)");
 		WebElement firstdrop = driver.findElement(By.xpath("//button[normalize-space()='What are Fan tokens?']"));
 
@@ -238,12 +236,9 @@ public class TC_001_HomepageTest {
 			driver.close();
 			Thread.sleep(4000);
 			driver.switchTo().window(Parent2);
-
 		}
-
+		
 		System.out.println("All Icons are clicked");
-
-
 
 		WebElement homelink=driver.findElement(By.xpath("//li[normalize-space()='Home']"));
 		homelink.click();
@@ -267,9 +262,6 @@ public class TC_001_HomepageTest {
 		driver.navigate().back();
 		System.out.println(" Learn is clicked");
 		
-		
-
-
 		WebElement SportsVerse101Link=driver.findElement(By.xpath("//li[normalize-space()='Sportsverse 101']"));
 		SportsVerse101Link.click();
 		Thread.sleep(3000);

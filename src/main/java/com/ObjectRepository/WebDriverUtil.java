@@ -3,9 +3,10 @@ package com.ObjectRepository;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
-
 import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -15,17 +16,18 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-/**
+/*
  * @author :nagamani
  * @ description: this class is going to create all the classes to reduce the code
  */
+
 public class WebDriverUtil {
 	WebDriver driver ;
 
 	public WebDriverUtil(WebDriver driver)
 	{
 		this.driver=driver;
-}
+	}
 
 	public void maximiseWindow() {
 		driver.manage().window().maximize();
@@ -40,8 +42,6 @@ public class WebDriverUtil {
 		WebDriverWait wait=new WebDriverWait(driver,10); 
 		wait.until(ExpectedConditions.elementToBeClickable(element));
 	}
-
-	
 
 	public void selectDD(String visibletext,WebElement element) 
 	{
@@ -75,29 +75,43 @@ public class WebDriverUtil {
 		action.dragAndDrop(source, target).build().perform();
 	}
 
-	public void refreshPage() {
+	public void refreshPage(){
 		driver.navigate().refresh();
 	}
 
 	public void acceptAlert() {
 		driver.switchTo().alert().accept();
-
 	}
 
 	public void TakeScreenshot() throws IOException {
 		TakesScreenshot sh=(TakesScreenshot)driver;
 		File src=sh.getScreenshotAs(OutputType.FILE);
-		
 		String filePath="copy path";
-		
 		File dest=new File(filePath);
 		FileUtils.copyFile(src, dest);
 	}
 
-	public WebDriver switchWindow(String Wh) 
-	{
+	public WebDriver switchWindow(String Wh){
 		driver.switchTo().window(Wh);
 		return driver.switchTo().window(Wh);
-
 	}
+
+	public void scrollToViewElement(WebElement element) {
+		JavascriptExecutor jse=(JavascriptExecutor)driver;
+		jse.executeScript("arguments[0].scrollIntoView()",element);
+	}
+
+	public void switchingToWindow(String window) throws InterruptedException {
+
+		String parent=driver.getWindowHandle();
+		Set<String> childs = driver.getWindowHandles();
+		for(String child:childs) {
+			if(!child.equals(parent)) {
+				driver.switchTo().window(child);
+				Thread.sleep(2000);
+			}
+			driver.close();
+			driver.switchTo().window(parent);
+		}
+	}	
 }

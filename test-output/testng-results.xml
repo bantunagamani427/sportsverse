@@ -2,16 +2,16 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2023-04-25T10:33:21 IST" name="Default suite" finished-at="2023-04-25T10:33:37 IST" duration-ms="16563">
+  <suite started-at="2023-05-01T15:58:10 IST" name="Default suite" finished-at="2023-05-01T16:00:04 IST" duration-ms="114581">
     <groups>
     </groups>
-    <test started-at="2023-04-25T10:33:21 IST" name="Default test" finished-at="2023-04-25T10:33:37 IST" duration-ms="16563">
-      <class name="com.SportsVerse.TCs.TC_008_CareerPageTest">
-        <test-method signature="careertest()[pri:0, instance:com.SportsVerse.TCs.TC_008_CareerPageTest@49912c99]" started-at="2023-04-25T10:33:21 IST" name="careertest" finished-at="2023-04-25T10:33:37 IST" duration-ms="16528" status="PASS">
+    <test started-at="2023-05-01T15:58:10 IST" name="Default test" finished-at="2023-05-01T16:00:04 IST" duration-ms="114581">
+      <class name="com.SportsVerse.TCs.TC_009_RoadMapPageTest">
+        <test-method signature="roadMapTest()[pri:0, instance:com.SportsVerse.TCs.TC_009_RoadMapPageTest@49912c99]" started-at="2023-05-01T15:58:10 IST" name="roadMapTest" finished-at="2023-05-01T16:00:04 IST" duration-ms="114547" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- careertest -->
-      </class> <!-- com.SportsVerse.TCs.TC_008_CareerPageTest -->
+        </test-method> <!-- roadMapTest -->
+      </class> <!-- com.SportsVerse.TCs.TC_009_RoadMapPageTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

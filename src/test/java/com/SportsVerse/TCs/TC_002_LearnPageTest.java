@@ -259,8 +259,7 @@ actions.moveToElement(element, 0, 100).build().perform();
 		learn1Link.click();
 		Thread.sleep(3000);
 		driver.navigate().back();
-		System.out.println("home is Learn is clicked");
-
+		System.out.println("  Learn is clicked");
 
 		WebElement SportsVerse101Link=driver.findElement(By.xpath("//li[normalize-space()='Sportsverse 101']"));
 		SportsVerse101Link.click();
@@ -268,13 +267,11 @@ actions.moveToElement(element, 0, 100).build().perform();
 		driver.navigate().back();
 		System.out.println("Sportsverse101 is clicked");
 
-
 		WebElement roadMapLink=driver.findElement(By.xpath("//li[normalize-space()='Roadmap']"));
 		roadMapLink.click();
 		Thread.sleep(3000);
 		driver.navigate().back();
 		System.out.println("RoadMap is clicked");
-
 
 		WebElement fantokensLink=driver.findElement(By.xpath("//li[normalize-space()='Fan Tokens']"));
 		fantokensLink.click();
@@ -282,14 +279,11 @@ actions.moveToElement(element, 0, 100).build().perform();
 		driver.navigate().back();
 		System.out.println("Fan Tokens is clicked");
 
-
-
 		WebElement aboutUsLink=driver.findElement(By.xpath("//li[normalize-space()='About us']"));
 		aboutUsLink.click();
 		Thread.sleep(3000);
 		driver.navigate().back();
 		System.out.println("About us  is clicked");
-
 
 		WebElement  CareerLink=driver.findElement(By.xpath("//li[normalize-space()='Career']"));
 		CareerLink.click();
@@ -310,7 +304,6 @@ actions.moveToElement(element, 0, 100).build().perform();
 		//	Thread.sleep(3000);
 		//	driver.navigate().back();
 
-
 		WebElement privacyPolicyLink=driver.findElement(By.xpath("//li[normalize-space()='Privacy Policy']"));
 		privacyPolicyLink.click();
 		Thread.sleep(3000);
@@ -326,9 +319,6 @@ actions.moveToElement(element, 0, 100).build().perform();
 
 		System.out.println("Privacy policy is clicked");
 
-
-
-
 		WebElement contactUsLink=driver.findElement(By.xpath("//a[normalize-space()='Contact us']"));
 		contactUsLink.click();
 		Thread.sleep(3000);
@@ -336,7 +326,6 @@ actions.moveToElement(element, 0, 100).build().perform();
 		System.out.println("Contact Us is clicked");
 
 		System.out.println("all footer links are clicked");
-
 
 		//	WebElement legalDesclaimerLink=driver.findElement(By.xpath("//li[normalize-space()='Legal Disclaimer']"));
 		//	legalDesclaimerLink.click();
