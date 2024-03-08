@@ -15,14 +15,16 @@ import org.testng.annotations.Test;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public class TC_007_SupportPageTest {
-	@Test
+public class TC_006_SupportPageTest {
+	
+	@Test(priority = 6)
 	public void supportTest() throws InterruptedException {
 
 		WebDriverManager.firefoxdriver().setup();
 		WebDriver driver=new FirefoxDriver();
 
 		driver.get("https://www.sportsverse.trade/supportPage");
+		System.out.println("Support page is opening");
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		Actions act=new Actions(driver);
@@ -178,22 +180,22 @@ public class TC_007_SupportPageTest {
 		driver.manage().window().setSize(size11);
 
 		driver.manage().window().maximize();
-		
 		/*
-		WebElement downloadApp1 = driver1.findElement(By.xpath("//h2[text()='Download App']"));
-		act1.moveToElement(downloadApp1);
-		executor2.executeScript("arguments[0].click();",downloadApp1 );
+		
+		WebElement downloadApp1 = driver.findElement(By.xpath("//h2[text()='Download App']"));
+		act.moveToElement(downloadApp1);
+		executor.executeScript("arguments[0].click();",downloadApp1 );
 
-		String parent=driver1.getWindowHandle();
-		Set<String> childs = driver1.getWindowHandles();
+		String parent=driver.getWindowHandle();
+		Set<String> childs = driver.getWindowHandles();
 		for( String child:childs) {
 			if(!child.equals(parent)) {
-				driver1.switchTo().window(child);
+				driver.switchTo().window(child);
 				Thread.sleep(2000);
 			}
 		}
-		driver1.close();
-		driver1.switchTo().window(parent);
+		driver.close();
+		driver.switchTo().window(parent);
 		Thread.sleep(2000);
 
 		*/
@@ -210,7 +212,7 @@ public class TC_007_SupportPageTest {
 		learn1Link.click();
 		Thread.sleep(3000);
 		driver.navigate().back();
-		System.out.println("home is Learn is clicked");
+		System.out.println("Learn is clicked");
 
 
 		WebElement SportsVerse101Link=driver.findElement(By.xpath("//li[normalize-space()='Sportsverse 101']"));

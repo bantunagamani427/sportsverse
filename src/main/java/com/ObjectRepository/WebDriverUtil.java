@@ -3,6 +3,7 @@ package com.ObjectRepository;
 
 import java.io.File;
 import java.io.IOException;
+import java.time.Duration;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 import org.apache.commons.io.FileUtils;
@@ -39,7 +40,7 @@ public class WebDriverUtil {
 	}
 
 	public void waitanClick(WebElement element) {
-		WebDriverWait wait=new WebDriverWait(driver,10); 
+		WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(10)); 
 		wait.until(ExpectedConditions.elementToBeClickable(element));
 	}
 

@@ -1,5 +1,6 @@
 package com.SportsVerse.TCs;
 
+import java.time.Duration;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
@@ -18,13 +19,15 @@ import org.testng.annotations.Test;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class TC_004_FanTokensTest {
-	@Test
+	
+	@Test(priority = 4)
 	public void fantokenstest() throws InterruptedException {
 		WebDriverManager.firefoxdriver().setup();
 		WebDriver driver=new FirefoxDriver();
 
 
 		driver.get("https://www.sportsverse.trade/FantokensPage");
+		System.out.println("Fan Tokens page is opening");
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
@@ -51,7 +54,7 @@ public class TC_004_FanTokensTest {
 		WebElement signUpClose = driver.findElement(By.xpath("//img[@src='data:image/svg+xml,%3Csvg%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20fill-rule%3D%22evenodd%22%20clip-rule%3D%22evenodd%22%20d%3D%22M13.4142%2012L19.7782%2018.364L18.364%2019.7782L12%2013.4143L5.63604%2019.7782L4.22183%2018.364L10.5858%2012L4.22183%205.63608L5.63604%204.22187L12%2010.5858L18.364%204.22187L19.7782%205.63608L13.4142%2012Z%22%20fill%3D%22%23DFDFDF%22%2F%3E%3C%2Fsvg%3E']"));
 
 
-		WebDriverWait wait=new WebDriverWait(driver, 40);
+		WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(40));
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector(".w3ajs-modal-loader.w3a-modal__loader")));
 		//WebElement signUpClose=wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//img[@alt='close']")));
 
@@ -136,11 +139,11 @@ public class TC_004_FanTokensTest {
 		//Locating all The FAQ's Links
 
 		JavascriptExecutor jse4=(JavascriptExecutor)driver;
-		jse4.executeScript("window.scrollBy(0,620)");
+		jse4.executeScript("window.scrollBy(0,400)");
 
-		//driver.manage().window().setSize(size);
+		driver.manage().window().setSize(size);
 
-		//driver.manage().window().maximize();
+		driver.manage().window().maximize();
 
 
 		WebElement faqContainer=driver.findElement(By.xpath("//div[@class=\"accordion accordion-flush\"]"));
@@ -148,10 +151,18 @@ public class TC_004_FanTokensTest {
 
 		//move to each FAQ and clicking
 		for( WebElement FaqLink:FaqLinks) {
-			act.moveToElement(FaqLink).click().perform();
-			Thread.sleep(1000);
+			//act.moveToElement(FaqLink).doubleClick().perform();
+			act.moveToElement(FaqLink, FaqLink.getSize().getWidth() / 2, FaqLink.getSize().getHeight() / 2).click().perform();
+
+			Thread.sleep(2000);
+			System.out.println("each FAQ Text: "+FaqLink.getText());
 			FaqLink.click();
+			
+			jse.executeScript("arguments[0].scrollIntoView();", FaqLink );
+			Thread.sleep(1000);
+			
 		}
+		
 		System.out.println("each Faq link is clicked");
 
 		Thread.sleep(2000);
@@ -244,7 +255,7 @@ public class TC_004_FanTokensTest {
 		act.moveToElement(learn1Link).click().perform();
 		Thread.sleep(3000);
 		driver.navigate().back();
-		System.out.println(" Learn is clicked");
+		System.out.println(" Learn1 is clicked");
 
 
 

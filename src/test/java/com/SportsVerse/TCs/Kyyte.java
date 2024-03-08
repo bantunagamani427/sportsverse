@@ -22,7 +22,7 @@ public class Kyyte {
        WebDriver driver=new FirefoxDriver();
        
        
-       driver.get("https://kyyte.metalok.io/about.html");
+       driver.get("https://kyyte.io/");
        driver.manage().window().maximize();
        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
        

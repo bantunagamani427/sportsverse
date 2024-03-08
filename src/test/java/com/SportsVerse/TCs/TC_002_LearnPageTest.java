@@ -16,13 +16,14 @@ import org.testng.annotations.Test;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class TC_002_LearnPageTest {
-	@Test 
+	
+	@Test(priority = 2) 
 	public void learntest() throws InterruptedException {
 		WebDriverManager.firefoxdriver().setup();
 		WebDriver driver=new FirefoxDriver();
 
 		//Open SportsVerse
-		System.out.println("opening the URL");
+		System.out.println("Learn page1 is opening");
 		driver.get("https://www.sportsverse.trade/learnPage1");
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -102,8 +103,7 @@ driver.manage().window().setSize(size);
 WebElement element = driver.findElement(By.xpath("//div[@class='some-class']"));
 Actions actions = new Actions(driver);
 actions.moveToElement(element, 0, 100).build().perform();
-
-		 */
+ */
 
 		//again coome back to learn page1
 		driver.navigate().back();
@@ -202,8 +202,6 @@ actions.moveToElement(element, 0, 100).build().perform();
 
 		List<WebElement> socialMediaIcons = socialMediaIconsContainer.findElements(By.tagName("a"));
 
-
-
 		//Clicking social media icons one by one
 		for(WebElement socialMediaIcon:socialMediaIcons) {
 			act.moveToElement(socialMediaIcon).click().perform();
@@ -220,7 +218,6 @@ actions.moveToElement(element, 0, 100).build().perform();
 			driver.close();
 			Thread.sleep(4000);
 			driver.switchTo().window(Parent2);
-
 		}
 
 		System.out.println("All Icons are clicked");
@@ -259,7 +256,7 @@ actions.moveToElement(element, 0, 100).build().perform();
 		learn1Link.click();
 		Thread.sleep(3000);
 		driver.navigate().back();
-		System.out.println("  Learn is clicked");
+		System.out.println("Learn is clicked");
 
 		WebElement SportsVerse101Link=driver.findElement(By.xpath("//li[normalize-space()='Sportsverse 101']"));
 		SportsVerse101Link.click();
@@ -331,8 +328,9 @@ actions.moveToElement(element, 0, 100).build().perform();
 		//	legalDesclaimerLink.click();
 		//	Thread.sleep(3000);
 		//	driver.navigate().back();
-		//
+		
 		System.out.println("learn1 page is executed successfully ");
 		driver.close();
+		
 	}
 }

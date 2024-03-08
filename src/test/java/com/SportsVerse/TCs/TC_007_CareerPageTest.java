@@ -13,14 +13,16 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.Test;
 import io.github.bonigarcia.wdm.WebDriverManager;
-public class TC_008_CareerPageTest {
-	@Test
+public class TC_007_CareerPageTest {
+	
+	@Test(priority = 7)
 	public void careertest() throws InterruptedException {
 
 		WebDriverManager.firefoxdriver().setup();
 		WebDriver driver=new FirefoxDriver();
 
 		driver.get("https://www.sportsverse.trade/careerPage");
+		System.out.println("Career page is opening");
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		System.out.println("Career page is opened");
@@ -302,6 +304,7 @@ public class TC_008_CareerPageTest {
 		System.out.println("all footer links are clicked one by one ");
 		System.out.println("Career page is executed successfully");
 		driver1.close();
+		
 		
 	}
 }

@@ -13,14 +13,15 @@ import org.testng.annotations.Test;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class TC_003_SportsVerse101Test {
-	@Test
+
+	@Test(priority = 3)
 	public void sportverse101test() throws InterruptedException {
-		
+
 		WebDriverManager.firefoxdriver().setup();
 		WebDriver driver=new FirefoxDriver();
 
 		driver.get("https://www.sportsverse.trade/learnPage2");
-
+		System.out.println("Learn page2 is opening");
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 
@@ -163,8 +164,8 @@ public class TC_003_SportsVerse101Test {
 		jse.executeScript("window.scrollBy(0,900)");
 		driver.manage().window().setSize(size);
 		driver.manage().window().maximize();
-		
-/*
+
+		/*
 		WebElement faqContainer=driver1.findElement(By.xpath("//div[@class=\"accordion accordion-flush\"]"));
 		List<WebElement> FaqLinks = faqContainer.findElements(By.tagName("div"));
 
@@ -177,47 +178,47 @@ public class TC_003_SportsVerse101Test {
 			System.out.println(FaqLink.getText());
 			Thread.sleep(1000);
 		}
-*/	
-	
+		 */	
+
 		WebElement firstFaq=driver.findElement(By.xpath("//button[normalize-space()='What are Fan tokens?']"));
 		firstFaq.click();
 		Thread.sleep(2000);
 		firstFaq.click();
-			
+
 		WebElement secondFaq=driver.findElement(By.xpath("//button[contains(text(),'What is a Digital Wallet? Are they necessary to bu')]"));
 		secondFaq.click();
 		Thread.sleep(2000);
 		secondFaq.click();
-		
+
 		WebElement thirdFaq=driver.findElement(By.xpath("//button[contains(text(),'Which Cryptocurrencies can be used for Trading on ')]"));
 		thirdFaq.click();
 		Thread.sleep(2000);
 		thirdFaq.click();
-		
+
 		WebElement fourthFaq=driver.findElement(By.xpath("//button[contains(text(),'Are my transactions secured on the Sportsverse Pla')]"));
 		act.moveToElement(fourthFaq).doubleClick().perform();
 		Thread.sleep(2000);
-		
+
 		WebElement fifth=driver.findElement(By.xpath("//button[normalize-space()='When will the NFT marketplace open on Sportsverse?']"));
 		fifth.click();
 		Thread.sleep(2000);
 		fifth.click();
-		
+
 		WebElement sixth=driver.findElement(By.xpath("//button[contains(text(),'Can the Fan Tokens of Sportsverse be considered NF')]"));
 		sixth.click();
 		Thread.sleep(2000);
 		sixth.click();
-		
+
 		WebElement seventh=driver.findElement(By.xpath("//button[contains(text(),'How to convert my profits on Sportsverse to FIAT c')]"));
 		seventh.click();
 		Thread.sleep(2000);
 		seventh.click();
-		
+
 		WebElement eighth=driver.findElement(By.xpath("//button[normalize-space()='What are the advantages of Staking?']"));
 		eighth.click();
 		Thread.sleep(2000);
 		eighth.click();
-	
+
 		System.out.println("each FAQ link is clciked");
 		Thread.sleep(2000);
 
@@ -266,7 +267,7 @@ public class TC_003_SportsVerse101Test {
 		act.moveToElement(learn1Link).click().perform();
 		Thread.sleep(3000);
 		driver.navigate().back();
-		System.out.println(" Learn is clicked");
+		System.out.println("Learn1 is clicked");
 
 		WebElement SportsVerse101Link=driver.findElement(By.xpath("//li[normalize-space()='Sportsverse 101']"));
 		SportsVerse101Link.click();

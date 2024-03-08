@@ -16,9 +16,9 @@ import org.testng.annotations.Test;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public class TC_009_RoadMapPageTest {
+public class TC_008_RoadMapPageTest {
 
-	@Test
+	@Test(priority = 8)
 	public void roadMapTest() throws InterruptedException {
 
 		WebDriverManager.firefoxdriver().setup();
@@ -97,7 +97,8 @@ public class TC_009_RoadMapPageTest {
 				System.out.println("******************************************");
 			}
 		}
-
+		//System.out.println("number of phases: "+uniquePhases.size());
+		
 		//clicking on download the white paper  //section[@class='road-map-line-section']
 
 		JavascriptExecutor jse=(JavascriptExecutor)driver;
@@ -230,6 +231,8 @@ public class TC_009_RoadMapPageTest {
 		Thread.sleep(3000);
 		driver.navigate().back();
 		System.out.println("Contact us link is clicked");
+
+		System.out.println("RoadMap Page is executed sucessfully ");
 		driver.close();
 	}
 }

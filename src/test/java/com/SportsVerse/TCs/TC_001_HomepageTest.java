@@ -18,14 +18,14 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class TC_001_HomepageTest {
 
-	@Test
+	@Test(priority = 1)
 	public void homepagetest() throws IOException, InterruptedException {
 
 		WebDriverManager.firefoxdriver().setup();
 		WebDriver driver=new FirefoxDriver();
 
 		driver.get("https://www.sportsverse.trade/");
-		System.out.println("URL is opening");
+		System.out.println("Home Page  is opening");
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
@@ -234,7 +234,7 @@ public class TC_001_HomepageTest {
 				}
 			}
 			driver.close();
-			Thread.sleep(4000);
+			Thread.sleep(2000);
 			driver.switchTo().window(Parent2);
 		}
 		
@@ -304,12 +304,10 @@ public class TC_001_HomepageTest {
 		driver.navigate().back();
 		System.out.println("Support  is clicked");
 
-
 		//	WebElement termsOfUseLink=driver.findElement(By.xpath("//li[normalize-space()='Terms of use']"));
 		//	termsOfUseLink.click();
 		//	Thread.sleep(3000);
 		//	driver.navigate().back();
-
 
 		WebElement privacyPolicyLink=driver.findElement(By.xpath("//li[normalize-space()='Privacy Policy']"));
 		privacyPolicyLink.click();
@@ -321,6 +319,8 @@ public class TC_001_HomepageTest {
 				driver.switchTo().window(child);
 			}
 		}
+		
+		
 		driver.close();
 		driver.switchTo().window(parent3);
 

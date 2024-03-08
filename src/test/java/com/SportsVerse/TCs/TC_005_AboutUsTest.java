@@ -1,5 +1,6 @@
 package com.SportsVerse.TCs;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
@@ -18,7 +19,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class TC_005_AboutUsTest {
 
-	@Test
+	@Test(priority = 5)
 	public void aboutUsTest() throws InterruptedException {
 
 		WebDriverManager.firefoxdriver().setup();
@@ -26,6 +27,7 @@ public class TC_005_AboutUsTest {
 
 		//driver.get("https://www.sportsverse.trade/");
 		driver.get("https://www.sportsverse.trade/companyPage");
+	
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
@@ -37,7 +39,7 @@ public class TC_005_AboutUsTest {
 		//		WebElement aboutDD = driver.findElement(By.xpath("//a[text()='About us ']"));
 		//		act.moveToElement(aboutDD).click().perform();
 		//			
-		System.out.println("URL is opening");
+		System.out.println("About Us page is opening");
 
 
 		//Clicking on withdraw Money
@@ -100,14 +102,26 @@ public class TC_005_AboutUsTest {
 
 		List<WebElement> teamMembers = ourTeamContainer.findElements(By.tagName("div"));
 
-		for(WebElement teamMember:teamMembers) {
-			System.out.println(teamMember.getText());
+		Set<String>uniqueNames=new HashSet<>();
+
+		// here there are number of div tags contains the repeated information to avoid this we use Hashset
+		//System.out.println("Number of Team members: "+teamMembers.size());
+
+		for(WebElement teamMember:teamMembers) {	
+			String eachName=teamMember.getText();
+			if(!uniqueNames.contains(eachName)) {
+				uniqueNames.add(eachName);
+				System.out.println("each Team Name: "+eachName);
+			}
+
 		}
+		System.out.println("Team members size: "+uniqueNames.size());
+
 
 		System.out.println("all team memebers are printed");
 
 		JavascriptExecutor jse1=(JavascriptExecutor)driver1;
-		jse1.executeScript("window.scrollBy(0,1400)");
+		jse1.executeScript("window.scrollBy(0,3000)");
 
 		Dimension size=new Dimension(1536, 731);
 		driver1.manage().window().setSize(size);
@@ -130,19 +144,15 @@ public class TC_005_AboutUsTest {
 
 		Thread.sleep(2000);
 		JavascriptExecutor jse2=(JavascriptExecutor)driver1;
-		jse2.executeScript("window.scrollBy(0,250)");
+		jse2.executeScript("window.scrollBy(0,300)");
 
 		Dimension size1=new Dimension(1536, 731);
 		driver1.manage().window().setSize(size1);
 
-
-
 		driver1.manage().window().maximize();
-
-
-
 		WebElement submitbtn=driver1.findElement(By.xpath("//button[@class='submit-btn']"));
 		act1.moveToElement(submitbtn).click().perform();
+		
 
 		String actual=driver1.findElement(By.xpath("//div[@class='submited-btn']")).getText();
 
@@ -157,8 +167,6 @@ public class TC_005_AboutUsTest {
 
 		JavascriptExecutor jse3=(JavascriptExecutor)driver1;
 		jse3.executeScript("window.scrollBy(0,2000)");
-
-
 
 		Dimension size2=new Dimension(1536, 731);
 		driver1.manage().window().setSize(size2);
@@ -185,134 +193,127 @@ public class TC_005_AboutUsTest {
 		driver1.manage().window().maximize();
 		WebElement downloadappLink=driver1.findElement(By.xpath("//button[@class='start-engine-btn']"));
 		act1.moveToElement(downloadappLink).click().perform();
-		
-				String parent2=driver1.getWindowHandle();
-				Set<String> childs1 = driver1.getWindowHandles();
-				for(String child1:childs1) {
-					if(!child1.equals(childs1)) {
-						driver1.switchTo().window(child1);
-						Thread.sleep(3000);
-					}
+
+		String parent2=driver1.getWindowHandle();
+		Set<String> childs1 = driver1.getWindowHandles();
+		for(String child1:childs1) {
+			if(!child1.equals(childs1)) {
+				driver1.switchTo().window(child1);
+				Thread.sleep(3000);
+			}
+		}
+		driver1.close();
+
+		driver1.switchTo().window(parent2);
+		System.out.println("image download app is clicked");
+
+		WebElement socialMediaContainer = driver1.findElement(By.xpath("//div[@class=\"footer-meta-social \"]"));
+		List<WebElement> socialMediaIcons = socialMediaContainer.findElements(By.tagName("a"));
+
+		for(WebElement socialMediaIcon:socialMediaIcons) {
+			act1.moveToElement(socialMediaIcon).click().perform();
+			Thread.sleep(4000);
+
+			String parent3=driver1.getWindowHandle();
+			Set<String> childs2 = driver1.getWindowHandles();
+
+			for( String child2:childs2) {
+				if(!child2.equals(parent3)) {
+					driver1.switchTo().window(child2);
 				}
-				driver1.close();
+			}
+			driver1.close();
+			Thread.sleep(3000);
+
+			driver1.switchTo().window(parent3);
+		}
+		System.out.println("all social media icons are clicked");
+
+		WebElement homelink=driver1.findElement(By.xpath("//li[normalize-space()='Home']"));
+		homelink.click();
+		Thread.sleep(3000);
+		driver1.navigate().back();
+		System.out.println("home is clicked");
+
+		WebElement learn1Link=driver1.findElement(By.xpath("//li[normalize-space()='Learn']"));
+		learn1Link.click();
+		Thread.sleep(3000);
+		driver1.navigate().back();
+		System.out.println("Learn is clicked");
+
+		WebElement SportsVerse101Link=driver1.findElement(By.xpath("//li[normalize-space()='Sportsverse 101']"));
+		SportsVerse101Link.click();
+		Thread.sleep(3000);
+		driver1.navigate().back();
+		System.out.println("Sportsverse101 is clicked");
+
+		WebElement roadMapLink=driver1.findElement(By.xpath("//li[normalize-space()='Roadmap']"));
+		roadMapLink.click();
+		Thread.sleep(3000);
+		driver1.navigate().back();
+		System.out.println("RoadMap is clicked");
+
+		WebElement fantokensLink=driver1.findElement(By.xpath("//li[normalize-space()='Fan Tokens']"));
+		fantokensLink.click();
+		Thread.sleep(3000);
+		driver1.navigate().back();
+		System.out.println("Fan Tokens is clicked");
+
+		WebElement aboutUsLink=driver1.findElement(By.xpath("//li[normalize-space()='About us']"));
+		aboutUsLink.click();
+		Thread.sleep(3000);
+		driver1.navigate().back();
+		System.out.println("About us  is clicked");
+
+		WebElement  CareerLink1=driver1.findElement(By.xpath("//li[normalize-space()='Career']"));
+		CareerLink1.click();
+		Thread.sleep(3000);
+		driver1.navigate().back();
+		System.out.println("Career is clicked");
+
+		WebElement supportLink=driver1.findElement(By.xpath("//li[normalize-space()='Support']"));
+		supportLink.click();
+		Thread.sleep(3000);
+		driver1.navigate().back();
+		System.out.println("Support  is clicked");
 		
-				driver1.switchTo().window(parent2);
+		//	WebElement termsOfUseLink=driver.findElement(By.xpath("//li[normalize-space()='Terms of use']"));
+		//	termsOfUseLink.click();
+		//	Thread.sleep(3000);
+		//	driver.navigate().back();
 		
-				WebElement socialMediaContainer = driver1.findElement(By.xpath("//div[@class=\"footer-meta-social \"]"));
-				List<WebElement> socialMediaIcons = socialMediaContainer.findElements(By.tagName("a"));
-		
-				for(WebElement socialMediaIcon:socialMediaIcons) {
-					act1.moveToElement(socialMediaIcon).click().perform();
-					Thread.sleep(4000);
-		
-					String parent3=driver1.getWindowHandle();
-					Set<String> childs2 = driver1.getWindowHandles();
-		
-					for( String child2:childs2) {
-						if(!child2.equals(parent3)) {
-							driver1.switchTo().window(child2);
-						}
-					}
-					driver1.close();
-					Thread.sleep(3000);
-		
-					driver1.switchTo().window(parent3);
-				}
-					System.out.println("all social media icons are clicked");
-		
-					WebElement homelink=driver1.findElement(By.xpath("//li[normalize-space()='Home']"));
-					homelink.click();
-					Thread.sleep(3000);
-					driver1.navigate().back();
-					System.out.println("home is clicked");
-		
-					WebElement learn1Link=driver1.findElement(By.xpath("//li[normalize-space()='Learn']"));
-					learn1Link.click();
-					Thread.sleep(3000);
-					driver1.navigate().back();
-					System.out.println("home is Learn is clicked");
-		
-		
-					WebElement SportsVerse101Link=driver1.findElement(By.xpath("//li[normalize-space()='Sportsverse 101']"));
-					SportsVerse101Link.click();
-					Thread.sleep(3000);
-					driver1.navigate().back();
-					System.out.println("Sportsverse101 is clicked");
-		
-		
-					WebElement roadMapLink=driver1.findElement(By.xpath("//li[normalize-space()='Roadmap']"));
-					roadMapLink.click();
-					Thread.sleep(3000);
-					driver1.navigate().back();
-					System.out.println("RoadMap is clicked");
-		
-		
-					WebElement fantokensLink=driver1.findElement(By.xpath("//li[normalize-space()='Fan Tokens']"));
-					fantokensLink.click();
-					Thread.sleep(3000);
-					driver1.navigate().back();
-					System.out.println("Fan Tokens is clicked");
-		
-		
-		
-					WebElement aboutUsLink=driver1.findElement(By.xpath("//li[normalize-space()='About us']"));
-					aboutUsLink.click();
-					Thread.sleep(3000);
-					driver1.navigate().back();
-					System.out.println("About us  is clicked");
-		
-		
-					WebElement  CareerLink1=driver1.findElement(By.xpath("//li[normalize-space()='Career']"));
-					CareerLink1.click();
-					Thread.sleep(3000);
-					driver1.navigate().back();
-					System.out.println("Career is clicked");
-		
-		
-					WebElement supportLink=driver1.findElement(By.xpath("//li[normalize-space()='Support']"));
-					supportLink.click();
-					Thread.sleep(3000);
-					driver1.navigate().back();
-					System.out.println("Support  is clicked");
-		
-		
-					//	WebElement termsOfUseLink=driver.findElement(By.xpath("//li[normalize-space()='Terms of use']"));
-					//	termsOfUseLink.click();
-					//	Thread.sleep(3000);
-					//	driver.navigate().back();
-		
-		
-					WebElement privacyPolicyLink=driver1.findElement(By.xpath("//li[normalize-space()='Privacy Policy']"));
-					privacyPolicyLink.click();
-					Thread.sleep(3000);
-					String parent4=driver1.getWindowHandle();
-					Set<String> childs4 = driver1.getWindowHandles();
-					for(String child4:childs4) {
-						if(!child4.equals(parent4)) {
-							driver1.switchTo().window(child4);
-						}
-					}
-					driver1.close();
-					driver1.switchTo().window(parent4);
-		
-					System.out.println("Privacy policy is clicked");
-		
-					WebElement contactUsLink=driver1.findElement(By.xpath("//a[normalize-space()='Contact us']"));
-					contactUsLink.click();
-					Thread.sleep(3000);
-					driver1.navigate().back();
-					System.out.println("Contact Us is clicked");
-		
-					System.out.println("all footer links are clicked");
-					driver1.navigate().refresh();
-		
+		WebElement privacyPolicyLink=driver1.findElement(By.xpath("//li[normalize-space()='Privacy Policy']"));
+		privacyPolicyLink.click();
+		Thread.sleep(3000);
+		String parent4=driver1.getWindowHandle();
+		Set<String> childs4 = driver1.getWindowHandles();
+		for(String child4:childs4) {
+			if(!child4.equals(parent4)) {
+				driver1.switchTo().window(child4);
+			}
+		}
+		driver1.close();
+		driver1.switchTo().window(parent4);
+
+		System.out.println("Privacy policy is clicked");
+
+		WebElement contactUsLink=driver1.findElement(By.xpath("//a[normalize-space()='Contact us']"));
+		contactUsLink.click();
+		Thread.sleep(3000);
+		driver1.navigate().back();
+		System.out.println("Contact Us is clicked");
+
+		System.out.println("all footer links are clicked");
+		driver1.navigate().refresh();
+
 		//				WebElement legalDesclaimerLink=driver.findElement(By.xpath("//li[normalize-space()='Legal Disclaimer']"));
 		//				legalDesclaimerLink.click();
 		//				Thread.sleep(3000);
 		//				driver.navigate().back();
-		//			
+					
 		System.out.println("About us page is executed successfully");
-					driver1.close();
+		driver1.close();
+		
 	}
 }
 
