@@ -86,8 +86,6 @@ public class TC_001_HomepageTest {
 		JavascriptExecutor jse=(JavascriptExecutor)driver;
 		jse.executeScript("window.scrollBy(0,12000)");
 
-
-
 		//again click on download app & Trade now
 		Dimension size=new Dimension(1600,900);
 		driver.manage().window().setSize(size);

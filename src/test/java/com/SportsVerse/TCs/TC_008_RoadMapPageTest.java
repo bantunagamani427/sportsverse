@@ -126,16 +126,9 @@ public class TC_008_RoadMapPageTest {
 		System.out.println("**********************************");
 		System.out.println("download the white paper is clicked :");
 
-
-
 		//driver is closed and again reintialized
-
-
-
 		WebElement footerContainer=driver.findElement(By.xpath("//div[@class=\"footer-meta-social \"]"));
 		List<WebElement> footerLinks = footerContainer.findElements(By.tagName("a"));
-
-
 
 		for(WebElement footerLink:footerLinks){
 			act.moveToElement(footerLink).click().perform();
@@ -148,7 +141,6 @@ public class TC_008_RoadMapPageTest {
 					Thread.sleep(2000);
 				}
 			}
-
 			driver.close();
 			Thread.sleep(1000);
 			driver.switchTo().window(Parent);
@@ -225,7 +217,6 @@ public class TC_008_RoadMapPageTest {
 		}
 		driver.close();
 		driver.switchTo().window(Parent2);
-
 		WebElement contactUsLink=driver.findElement(By.xpath("//li[normalize-space()='Contact us']"));
 		act.moveToElement(contactUsLink).click().perform();
 		Thread.sleep(3000);
